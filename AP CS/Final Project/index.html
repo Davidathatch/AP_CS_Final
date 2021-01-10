@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasky</title>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,400&family=Nunito:ital,wght@0,300;0,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+
+        <h1 class="headerLogo">Tasky</h1>
+
+        <div class="inputContainer">
+            <form action="#">
+                <input type="text" placeholder="Begin typing here..." id="taskInput">
+            </form>
+        </div>
+    </header>
+
+    <div class="messageBanner">
+        <h1 class="messageDisplay">No Tasks</h1>
+    </div>
+
+    <main>
+        <div class="Column">
+            <div class="sidebar">
+                <div class="accountInfo">
+                    <img src="images/profile.jpg" alt="profile pic">
+                    <h2 class="accountName">David T</h2>
+                </div>
+
+                <div class="listSection">
+                    <h2 class="listSectionTitle">My Lists</h2>
+                    <div class="sectionOptions">
+                        <div class="sectionButton workButton">
+                            <h3>Work</h3>
+                        </div>
+
+                        <div class="sectionButton homeButton">
+                            <h3>Home</h3>
+                        </div>
+
+                        <div class="sectionButton schoolButton">
+                            <h3>School</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listSection">
+                    <h2 class="listSectionTitle">Shortcuts</h2>
+                    <div class="sectionOptions">
+                        <div class="sectionButton sectionButtonDivided shortcutOne">
+                            <div class="buttonDivider">
+                                <h4>1</h4>
+                            </div>
+                            <div class="cmdContainer">
+                                <h3>New Task</h3>
+                            </div>
+                        </div>
+
+                        <div class="sectionButton sectionButtonDivided shortcutTwo">
+                            <div class="buttonDivider">
+                                <h4>2</h4>
+                            </div>
+                            <div class="cmdContainer">
+                                <h3>Del Task</h3>
+                            </div>
+                        </div>
+
+                        <!-- <div class="sectionButton sectionButtonDivided shortcutThree">
+                            <div class="buttonDivider">
+                                <h4>3</h4>
+                            </div>
+                            <div class="cmdContainer">
+                                <h3>Clear All</h3>
+                            </div>
+                        </div> -->
+
+
+                    </div>
+                </div>
+
+                <div class="sidebarFooter">
+                </div>
+            </div>
+        </div>
+
+        <div class="Column taskColumn">
+            <div class="taskList">
+
+
+            </div>
+
+        </div>
+        </div>
+
+        <div class="Column">
+            <img src="images/addButton.svg" alt="addButton" class="addButton">
+        </div>
+        <i class="fas fa-trash"></i>
+        </div>
+    </main>
+
+</body>
+
+<script src="app.js"></script>
+
+</html>
