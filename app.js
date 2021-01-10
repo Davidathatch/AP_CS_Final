@@ -1,5 +1,6 @@
 //Takes in inputted task as parameter, and creates an HTML element
 //To be inserted into the task list visible to user
+//classIndex adds number to classlist used for removing tasks
 function createTask(taskInput, appendPlacement, taskStatus, classIndex) {
     //Creates task div
     var taskDiv = document.createElement("div")
@@ -40,9 +41,10 @@ function createTask(taskInput, appendPlacement, taskStatus, classIndex) {
 
     if (appendPlacement === "top") {
         taskList.insertBefore(taskDiv, topItem)
-        document.querySelector(".checkBox").addEventListener("click", removeTask, false)
+        checkBoxDiv.addEventListener("click", toggleTaskStatus, false)
     } else {
         taskList.appendChild(taskDiv)
+        checkBoxDiv.addEventListener("click", toggleTaskStatus, false)
     }
 
     if(currentLibrary.length > 0){
@@ -53,20 +55,17 @@ function createTask(taskInput, appendPlacement, taskStatus, classIndex) {
 
 //Different from removetask, as deleteTask removes the task from the screen
 function deleteTask(e){
-
     //will take place if trashbutton or delete shortcut button is clicked
     if(e.currentTarget === document.querySelector(".fa-trash") || e.currentTarget === document.querySelector(".shortcutTwo")){
         if(deleteOn === false){
             deleteOn = true
             console.log(deleteButton)
-            deleteButton.classList.add("buttonSelected")
+            e.currentTarget.classList.add("buttonSelected")
         }else {
             deleteOn = false
-            deleteButton.classList.remove("buttonSelected")
+            e.currentTarget.classList.remove("buttonSelected")
         }
-        
     }
-
     //will take place if task is clicked and deleteOn is true
     if(e.currentTarget.classList.contains("task") && deleteOn === true){
         e.currentTarget.remove()
@@ -96,20 +95,22 @@ function updateTasks(currentLibrary) {
 
 //Adds completed styles and moves task to the bottom of the list
 //Also changes status to complete, for loading content in the future
-function removeTask(e) {
-    var currentTask = e.currentTarget.parentElement.childNodes
+function toggleTaskStatus(e) {
+    // var currentTask = e.currentTarget.parentElement.childNodes
     var currentTaskDiv = e.currentTarget.parentNode
-    var currentTaskBackground = e.currentTarget.parentElement
-    currentTask[0].classList.add("checkedBox")
-    currentTaskBackground.classList.add("completedTask")
-    createTask(currentTask[1].innerText, "bottom", "completed", -1)
-
-    currentLibrary[currentTaskDiv.classList[1]]["taskStatus"] = "completed"
-    currentTaskBackground.remove()
+    // var currentTaskBackground = e.currentTarget.parentElement
+    // currentTask[0].classList.add("checkedBox")
+    // currentTaskBackground.classList.add("completedTask")
+    // createTask(currentTask[1].innerText, "bottom", "completed", -1)
+    console.log(currentLibrary[currentTaskDiv.classList[1]]["taskStatus"])
+    if(currentLibrary[currentTaskDiv.classList[1]]["taskStatus"] === "completed"){
+        currentLibrary[currentTaskDiv.classList[1]]["taskStatus"] = "incomplete"
+    }else {
+        currentLibrary[currentTaskDiv.classList[1]]["taskStatus"] = "completed"
+    }
     
     clearList()
     updatePage(currentLibrary)
-    console.log(currentLibrary)
 }
 
 //Saves function in dictionary inside of the currentLibrary list
@@ -226,28 +227,10 @@ addButton.addEventListener("click", function () {
 
 deleteButton.addEventListener("click", deleteTask)
 
+//Different list catalogs
 var taskCatalog = []
 var homeCatalog = []
 var schoolCatalog = []
-
-testCatalog = [
-    taskName = {
-        "taskName": "Task",
-        "taskStatus": "completed"
-    },
-    taskName = {
-        "taskName": "Another Task",
-        "taskStatus": "incomplete"
-    },
-    taskName = {
-        "taskName": "Last task",
-        "taskStatus": "incomplete"
-    },
-]
-
-// localStorage.setObj("tesetCatalog", testCatalog)
-// var testLocalStorage = localStorage.getObj("tesetCatalog")
-// console.log(testLocalStorage[1]["taskName"])
 
 //Dictates library of tasks is being used
 var currentLibrary = taskCatalog
@@ -262,10 +245,12 @@ if (currentLibrary.length >= 0) {
     }
 }
 
+//Switch library buttons
 var workButton = document.querySelector(".workButton")
 var homeButton = document.querySelector(".homeButton")
 var schoolButton = document.querySelector(".schoolButton")
 
+//Changes library according to which button is clicked
 workButton.addEventListener("click", function() {
     changeLibrary(taskCatalog)
 })
@@ -276,10 +261,16 @@ schoolButton.addEventListener("click", function(){
     changeLibrary(schoolCatalog)
 })
 
+//Focusses on inputBar when clicked on shortcut one
 document.querySelector(".shortcutOne").addEventListener("click", function() {
     inputBar.focus()
 })
+//Runs deleteTask function when shortcut two is clicked
 document.querySelector(".shortcutTwo").addEventListener("click", deleteTask)
 
-
+//Changes deleteOn to false, and removes click styling from deleteButton and delete shortcut
+inputBar.addEventListener("click", function(){
+    deleteOn = false
+    deleteButton.classList.remove("buttonSelected")
+})
 changeLibrary(taskCatalog)
