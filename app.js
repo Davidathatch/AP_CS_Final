@@ -152,6 +152,21 @@ function clearList() {
     }
 }
 
+//In mobile, closes the dropdown menu
+function closeDropdown(){
+
+    if(header.classList.contains("headerOpen")){
+        inputContainer.classList.remove("inputContainerOpen")
+    header.classList.remove("headerOpen")
+    dropdownArrow.classList.remove("dropdownArrowOpen")
+    sideBar.classList.remove("sidebarOpen")
+
+    for(let x=0; x < sectionButton.length; x++){
+        sectionButton[x].classList.remove("sectionButtonOpen")
+    }
+    }
+}
+
 //Saves all new data to array, then changes to new catalog
 function changeLibrary(chosenLibrary){
     clearList()
@@ -192,11 +207,16 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
-//Input field for new tasks
+//Misc HTML elements used throughout code
 var inputBar = document.querySelector("#taskInput")
+var inputContainer = document.querySelector(".inputContainer")
+var header = document.querySelector("header")
+var sectionButton = document.querySelectorAll(".sectionButton")
 var addButton = document.querySelector(".addButton")
 var deleteButton = document.querySelector(".fa-trash")
 var taskContainer = document.querySelectorAll(".task")
+var dropdownArrow = document.querySelector(".dropdownArrow")
+var sideBar = document.querySelector(".sidebar")
 //deleteOn used to delete task
 deleteOn = false
 
@@ -253,12 +273,15 @@ var schoolButton = document.querySelector(".schoolButton")
 //Changes library according to which button is clicked
 workButton.addEventListener("click", function() {
     changeLibrary(taskCatalog)
+    closeDropdown()
 })
 homeButton.addEventListener("click", function() {
     changeLibrary(homeCatalog)
+    closeDropdown()
 })
 schoolButton.addEventListener("click", function(){
     changeLibrary(schoolCatalog)
+    closeDropdown()
 })
 
 //Focusses on inputBar when clicked on shortcut one
@@ -273,4 +296,18 @@ inputBar.addEventListener("click", function(){
     deleteOn = false
     deleteButton.classList.remove("buttonSelected")
 })
+
+//In a mobile environment, this will toggle the menu when
+//dropdown button is clicked 
+dropdownArrow.addEventListener("click", function(){
+    inputContainer.classList.toggle("inputContainerOpen")
+    header.classList.toggle("headerOpen")
+    dropdownArrow.classList.toggle("dropdownArrowOpen")
+    sideBar.classList.toggle("sidebarOpen")
+
+    for(let x=0; x < sectionButton.length; x++){
+        sectionButton[x].classList.toggle("sectionButtonOpen")
+    }
+})
+
 changeLibrary(taskCatalog)

@@ -22,6 +22,10 @@
 
 <body>
 
+    <div class="messageBanner">
+        <h1 class="messageDisplay">No Tasks</h1>
+    </div>
+
     <header>
 
         <h1 class="headerLogo">Tasky</h1>
@@ -31,11 +35,10 @@
                 <input type="text" placeholder="Begin typing here..." id="taskInput">
             </form>
         </div>
+        <div class="arrowPosition">
+            <img src="images/dropdownArrow.svg" alt="dropdownArrow" class="dropdownArrow">
+        </div>
     </header>
-
-    <div class="messageBanner">
-        <h1 class="messageDisplay">No Tasks</h1>
-    </div>
 
     <main>
         <div class="Column">
@@ -83,16 +86,6 @@
                             </div>
                         </div>
 
-                        <!-- <div class="sectionButton sectionButtonDivided shortcutThree">
-                            <div class="buttonDivider">
-                                <h4>3</h4>
-                            </div>
-                            <div class="cmdContainer">
-                                <h3>Clear All</h3>
-                            </div>
-                        </div> -->
-
-
                     </div>
                 </div>
 
@@ -110,11 +103,12 @@
         </div>
         </div>
 
-        <div class="Column">
+        <div class="Column buttonColumn">
             <img src="images/addButton.svg" alt="addButton" class="addButton">
+
+            <i class="fas fa-trash"></i>
         </div>
-        <i class="fas fa-trash"></i>
-        </div>
+
     </main>
 
 </body>

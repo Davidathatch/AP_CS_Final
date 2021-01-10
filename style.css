@@ -252,3 +252,156 @@ header {
   background-color: #456268;
   color: white;
 }
+
+.dropdownArrow {
+  display: none;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 700px) {
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  main {
+    overflow: hidden;
+  }
+
+  .headerLogo {
+    display: none;
+  }
+
+  .inputContainer input {
+    position: relative;
+    width: 90%;
+    z-index: 2;
+  }
+
+  .inputContainerOpen {
+    position: absolute;
+    z-index: 2;
+    top: 35px;
+  }
+
+  header {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .headerOpen {
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+  }
+
+  .inputContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #taskInput {
+    width: 90vw;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebarOpen {
+    position: absolute;
+    display: inline-block;
+    top: 15%;
+    width: 100%;
+    z-index: 3;
+  }
+
+  .listSection {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sectionButtonOpen {
+    background-color: white;
+  }
+
+  .accountInfo {
+    margin-left: 40px;
+  }
+
+  .sidebarFooter {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+  }
+
+  /* BOTTOM BUTTONS */
+  .fa-trash {
+    position: static;
+    margin: 0 10px 5px 0;
+  }
+  .addButton {
+    position: static;
+    margin: 0 0 5px 10px;
+  }
+
+  /* COLUMNS */
+  .buttonColumn {
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .taskColumn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .taskList {
+    width: 90%;
+  }
+
+  /* NO TASKS MESSAGE */
+  .messageDisplay {
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 28%;
+  }
+
+  /* DROPDOWN ARROW */
+  .arrowPosition {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  .dropdownArrow {
+    position: absolute;
+    display: inline;
+    bottom: 10px;
+    right: 44%;
+    width: 50px;
+  }
+  .dropdownArrowOpen {
+    position: absolute;
+    right: 47%;
+    top: 95%;
+    transform: rotate(180deg);
+  }
+}
