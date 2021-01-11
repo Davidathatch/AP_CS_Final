@@ -160,6 +160,7 @@ function closeDropdown(){
     header.classList.remove("headerOpen")
     dropdownArrow.classList.remove("dropdownArrowOpen")
     sideBar.classList.remove("sidebarOpen")
+    // document.querySelector("html, body").style.toggle.overflowX
 
     for(let x=0; x < sectionButton.length; x++){
         sectionButton[x].classList.remove("sectionButtonOpen")
@@ -304,6 +305,7 @@ dropdownArrow.addEventListener("click", function(){
     header.classList.toggle("headerOpen")
     dropdownArrow.classList.toggle("dropdownArrowOpen")
     sideBar.classList.toggle("sidebarOpen")
+    // document.querySelector("html, body").style.toggle.overflowX
 
     for(let x=0; x < sectionButton.length; x++){
         sectionButton[x].classList.toggle("sectionButtonOpen")

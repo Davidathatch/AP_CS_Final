@@ -261,8 +261,14 @@ header {
 @media (max-width: 700px) {
   body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: 100vh;
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
   }
 
   main {
@@ -382,6 +388,7 @@ header {
     position: absolute;
     top: 50%;
     left: 28%;
+    margin: 0;
   }
 
   /* DROPDOWN ARROW */
@@ -390,12 +397,13 @@ header {
     height: 100%;
     width: 100%;
     z-index: 1;
+    overflow: hidden;
   }
   .dropdownArrow {
     position: absolute;
     display: inline;
     bottom: 10px;
-    right: 44%;
+    right: 43%;
     width: 50px;
   }
   .dropdownArrowOpen {
