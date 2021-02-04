@@ -59,7 +59,7 @@ function deleteTask(e){
     if(e.currentTarget === document.querySelector(".fa-trash") || e.currentTarget === document.querySelector(".shortcutTwo")){
         if(deleteOn === false){
             deleteOn = true
-            console.log(deleteButton)
+            
             e.currentTarget.classList.add("buttonSelected")
         }else {
             deleteOn = false
@@ -74,12 +74,12 @@ function deleteTask(e){
             if(currentLibrary[x]["taskName"] === e.currentTarget.innerText){
                  console.log("removed " + currentLibrary[x]["taskName"])
                 currentLibrary.splice(x, 1)
-                console.log(currentLibrary)
+                
             }
         }
         clearList()
     updatePage(currentLibrary)
-    console.log(currentLibrary)
+    
     }
 }
 
@@ -195,18 +195,7 @@ function changeLibrary(chosenLibrary){
         schoolButton.classList.add("buttonSelected")
     }
     updatePage(currentLibrary)
-}
 
-
-//Lines 124-129 were found on Stack Overflow, used to allow localStorage
-//of objects rather than strings
-//https://stackoverflow.com/questions/3357553/how-do-i-store-an-array-in-localstorage#:~:text=Use%20localStorage.,array%20or%20object%20and%20localStorage.&text=The%20same%20methods%20work%20with,is%20returned%20by%20the%20getter.
-Storage.prototype.setObj = function(key, obj) {
-    return this.setItem(key, JSON.stringify(obj))
-}
-Storage.prototype.getObj = function(key) {
-    return JSON.parse(this.getItem(key))
-}
 
 //Misc HTML elements used throughout code
 var inputBar = document.querySelector("#taskInput")
