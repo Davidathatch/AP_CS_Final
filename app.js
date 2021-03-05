@@ -79,6 +79,7 @@ function deleteTask(e){
         }
         clearList()
     updatePage(currentLibrary)
+    console.log(currentLibrary)
     }
 }
 
@@ -147,7 +148,7 @@ function clearList() {
     var taskList = document.getElementsByClassName("task")
     var libraryLength = currentLibrary.length
     for(let x=libraryLength-1; x>=0; x--){
-       currentLibrary[x].remove()
+        taskList[x].remove()
     }
 }
 
